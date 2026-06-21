@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// TODO: swap for the real production domain once deployed
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andrewheejaylee.com"),
+  metadataBase: new URL("https://andrewheejay.com"),
   title: "Andrew Heejay Lee",
   description: "Building machine learning systems on solid ground.",
   openGraph: {

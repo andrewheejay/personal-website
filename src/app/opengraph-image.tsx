@@ -47,7 +47,7 @@ export default function OpengraphImage() {
               letterSpacing: 1,
             }}
           >
-            andrewheejaylee.com
+            andrewheejay.com
           </div>
         </div>
         <svg width="260" height="260" viewBox="0 0 100 100">
