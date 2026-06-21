@@ -33,7 +33,7 @@ export default function Lime() {
       {/* Opening */}
       <section className="py-8 space-y-4 lowercase text-ivory/80">
         <p>
-          i built lime because i couldn&apos;t decide what to wear, and i was pretty sure i wasn&apos;t the only one. every morning is the same small tax: stand in front of a closet, forget half of what&apos;s in it, fail to account for the weather, and settle for the same three outfits on rotation. that&apos;s a real problem, it&apos;s a real market (closet apps and styling services exist for a reason), and it was the right size to chase a third goal i cared about just as much: proving to myself i could design and ship a full-stack ai product solo, end to end, not just train a model in a notebook.
+          i built lime because i couldn&apos;t decide what to wear, and i was pretty sure i wasn&apos;t the only one. every morning is the same small task: stand in front of a closet, forget half of what&apos;s in it, fail to account for the weather, and settle for the same three outfits on rotation. that&apos;s a real problem, it&apos;s a real market (closet apps and styling services exist for a reason), and it was the right size to chase a third goal i cared about just as much: proving to myself i could design and ship a full-stack ai product solo, end to end, not just train a model in a notebook.
         </p>
         <p>
           so lime does one thing: you take a phone photo of a piece of clothing, and it becomes a tagged, searchable entry in a digital closet. then it uses vector search and live weather to recommend outfits that actually go together. no manual data entry, no filling in forms about your shirts.
