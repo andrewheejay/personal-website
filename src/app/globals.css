@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-ogg: var(--font-ogg-local), serif;
+  --color-ivory: #F4F1EB;
+  --color-ink: #0B0C0C;
+  --color-todo: #D9A441;
 }

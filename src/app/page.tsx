@@ -1,73 +1,75 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <div className="space-y-20 text-left max-w-2xl font-serif text-[#F4F1EB] pb-24">
-      
-      {/* Header */}
-      <section className="space-y-4">
-        <h1 className="text-4xl md:text-5xl font-medium tracking-tight lowercase">
-          andrew heejay lee
-        </h1>
-        <p className="text-lg md:text-xl text-[#F4F1EB]/70 lowercase italic">
-          building machine learning systems on solid ground.
-        </p>
-      </section>
+    <div className="text-ivory text-base leading-relaxed">
 
-      {/* Currently */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-ogg text-[#F4F1EB]/60 lowercase">
-          currently
-        </h2>
-        <div className="text-lg text-[#F4F1EB]/80 space-y-2 lowercase">
-          <p>incoming @ penn (&apos;30)</p>
+      {/* Identity */}
+      <header className="space-y-2 pb-10">
+        <h1 className="text-xl font-medium lowercase">andrew heejay lee</h1>
+        <p className="text-ivory/60 lowercase">builder, incoming @ penn (&apos;30)</p>
+        <div className="flex gap-4 text-sm text-ivory/50 lowercase pt-1">
+          <a href="mailto:andrew.heejay.lee@gmail.com" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">email</a>
+          <a href="https://github.com/andrewheejay" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github</a>
+          <a href="https://www.linkedin.com/in/andrewheejay/" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">linkedin</a>
+        </div>
+      </header>
+
+      {/* Now */}
+      <section className="pb-10">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40 pb-3">now</h2>
+        <div className="space-y-1 lowercase text-ivory/80">
           <p>summer intern @ dnk (june–august)</p>
           <p>building full-stack with react & next.js</p>
           <p>prototyping machine learning pipelines</p>
         </div>
       </section>
 
-      {/* Selected Work */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-ogg text-[#F4F1EB]/60 lowercase">
-          selected work
-        </h2>
-        <div className="space-y-8">
+      {/* Built */}
+      <section className="pb-10">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40 pb-3">built</h2>
+        <div className="space-y-6">
 
-          <div className="opacity-80">
-            <h3 className="text-xl lowercase text-[#F4F1EB]">phishfence ml pipeline</h3>
-            <p className="text-sm text-[#F4F1EB]/50 lowercase mt-2">phishing email detection utilizing bert-based tokenization and explainable ai</p>
+          <div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-xs text-ivory/40 shrink-0">2026</span>
+              <Link href="/built/lime" className="lowercase text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">lime</Link>
+            </div>
+            <p className="text-sm text-ivory/60 lowercase mt-1">
+              an ai digital wardrobe: snap a photo of clothing, get it tagged and embedded, and get weather-aware outfit recommendations. solo-built four-service product (next.js, fastapi, gemini, pinecone).
+            </p>
           </div>
 
-          <div className="opacity-80">
-            <h3 className="text-xl lowercase text-[#F4F1EB]">bu rise research</h3>
-            <p className="text-sm text-[#F4F1EB]/50 lowercase mt-2">research poster symposium and professional abstract presentation</p>
+          <div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-xs text-ivory/40 shrink-0">2025</span>
+              <Link href="/built/phishfence" className="lowercase text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">phishfence</Link>
+            </div>
+            <p className="text-sm text-ivory/60 lowercase mt-1">
+              phishing email detection that explains itself, bert classifier at 99.31% accuracy paired with shap + gemini for plain-language explanations. bu rise data science practicum, first author.
+            </p>
           </div>
 
-          <div className="opacity-80">
-            <h3 className="text-xl lowercase text-[#F4F1EB]">stem club operations</h3>
-            <p className="text-sm text-[#F4F1EB]/50 lowercase mt-2">scaling infrastructure, hosa competitions, and hosting professional visits</p>
+          <div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-xs text-ivory/40 shrink-0">2024</span>
+              <Link href="/built/motion-segmentation" className="lowercase text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">motion segmentation</Link>
+            </div>
+            <p className="text-sm text-ivory/60 lowercase mt-1">
+              benchmarked seven imu segmentation algorithms and tested whether a neural net could match them. korea science service international research program.
+            </p>
           </div>
 
-        </div>
-      </section>
+          <div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-xs text-ivory/40 shrink-0">2023</span>
+              <Link href="/built/authentivox" className="lowercase text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">authentivox</Link>
+            </div>
+            <p className="text-sm text-ivory/60 lowercase mt-1">
+              real-time voice phishing detection, 98.46% accuracy with a random forest classifier light enough to run without a gpu. ksef silver medal.
+            </p>
+          </div>
 
-      {/* Pursuits */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-ogg text-[#F4F1EB]/60 lowercase">
-          pursuits
-        </h2>
-        <div className="text-lg text-[#F4F1EB]/80 space-y-2 lowercase">
-          <p>varsity soccer (lcb) & basketball @ yiss</p>
-          <p>curating high-end streetwear</p>
-          <p>hunting vintage digicams (lumix tz7)</p>
-        </div>
-      </section>
-
-      {/* Links */}
-      <section className="pt-12">
-        <div className="flex gap-8 text-sm text-[#F4F1EB]/50 lowercase">
-          <a href="mailto:andrew.heejay.lee@gmail.com" className="hover:text-[#F4F1EB] transition-colors">email</a>
-          <a href="https://github.com/andrewheejay" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EB] transition-colors">github</a>
-          <a href="https://www.linkedin.com/in/andrewheejay/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EB] transition-colors">linkedin</a>
         </div>
       </section>
 
