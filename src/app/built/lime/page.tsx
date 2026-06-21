@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Lime — Andrew Heejay Lee",
+  title: "lime — andrew heejay lee",
   description: "An AI digital wardrobe that tells you what to wear.",
 };
 

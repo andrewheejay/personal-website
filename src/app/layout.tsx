@@ -3,17 +3,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrewheejay.com"),
-  title: "Andrew Heejay Lee",
+  title: "andrew heejay lee",
   description: "Building machine learning systems on solid ground.",
   openGraph: {
-    title: "Andrew Heejay Lee",
+    title: "andrew heejay lee",
     description: "Building machine learning systems on solid ground.",
-    siteName: "Andrew Heejay Lee",
+    siteName: "andrew heejay lee",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andrew Heejay Lee",
+    title: "andrew heejay lee",
     description: "Building machine learning systems on solid ground.",
   },
 };
