@@ -1,78 +1,81 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from 'next/og'
 
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = "image/png";
+export const runtime = 'edge'
+export const alt = 'Andrew Heejay Lee'
+export const size = { width: 1200, height: 630 }
+export const contentType = 'image/png'
 
-export default function OpengraphImage() {
+async function loadInter(weight: 400 | 600) {
+  const res = await fetch(
+    `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&display=swap`
+  )
+  const css = await res.text()
+  const match = css.match(/src: url\(([^)]+)\) format\('(woff2|truetype)'\)/)
+  if (!match) throw new Error('font src not found')
+  const fontRes = await fetch(match[1])
+  return fontRes.arrayBuffer()
+}
+
+export default async function Image() {
+  const [regular, semibold] = await Promise.all([
+    loadInter(400),
+    loadInter(600),
+  ])
+
   return new ImageResponse(
     (
       <div
         style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          background: "#0B0C0C",
-          color: "#F4F1EB",
-          border: "1px solid rgba(244,241,235,0.12)",
+          width: '100%',
+          height: '100%',
+          background: '#0B0C0C',
+          color: '#F4F1EB',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '0 110px',
+          fontFamily: 'Inter',
         }}
       >
         <div
           style={{
-            flex: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 110px",
+            fontSize: 88,
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 80, fontFamily: "sans-serif" }}>
-              andrew heejay lee
-            </div>
-            <div
-              style={{
-                marginTop: 24,
-                fontSize: 32,
-                fontFamily: "monospace",
-                color: "#F4F1EB",
-                opacity: 0.7,
-                letterSpacing: 1,
-              }}
-            >
-              building machine learning systems on solid ground
-            </div>
-          </div>
-          <svg width="320" height="320" viewBox="0 0 100 100">
-            <polygon
-              points="48,5 72,22 90,50 82,75 62,92 38,95 12,80 8,50 22,18"
-              fill="#1E1F1D"
-            />
-            <polygon points="48,5 22,18 8,50 30,70 45,60" fill="#4A4A45" />
-            <polygon points="48,5 72,22 90,50 60,55" fill="#2E2E2A" />
-            <polygon points="48,5 32,12 40,35" fill="#D8D2C2" />
-            <polygon points="60,55 90,50 82,75 62,92" fill="#060606" />
-          </svg>
+          andrew heejay lee
         </div>
         <div
           style={{
-            display: "flex",
-            padding: "28px 110px",
-            borderTop: "1px solid rgba(244,241,235,0.12)",
-            fontSize: 24,
-            fontFamily: "monospace",
-            color: "#F4F1EB",
-            opacity: 0.45,
-            letterSpacing: 1,
+            marginTop: 26,
+            fontSize: 32,
+            fontWeight: 400,
+            color: 'rgba(244,241,235,0.5)',
+          }}
+        >
+          building machine learning systems on solid ground
+        </div>
+        <div
+          style={{
+            marginTop: 64,
+            fontSize: 22,
+            fontWeight: 400,
+            color: 'rgba(244,241,235,0.35)',
+            letterSpacing: '0.04em',
+            fontFamily: 'monospace',
           }}
         >
           andrewheejay.com
         </div>
       </div>
     ),
-    { ...size }
-  );
+    {
+      ...size,
+      fonts: [
+        { name: 'Inter', data: regular, weight: 400, style: 'normal' },
+        { name: 'Inter', data: semibold, weight: 600, style: 'normal' },
+      ],
+    }
+  )
 }

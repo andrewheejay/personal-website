@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body className="antialiased min-h-screen bg-ink font-sans text-ivory selection:bg-ivory selection:text-black">
         <main className="max-w-2xl mx-auto px-6 py-16 md:py-20">
           {children}
