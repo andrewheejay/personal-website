@@ -19,7 +19,7 @@ export default function Home() {
       <section className="pb-10">
         <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40 pb-3">now</h2>
         <div className="space-y-1 lowercase text-ivory/80">
-          <p>summer intern @ dnk (june–august)</p>
+          <p>summer intern @ <a href="https://www.dnk.co/" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">dnk</a> (june–august)</p>
           <p>building full-stack with react & next.js</p>
           <p>prototyping machine learning pipelines</p>
         </div>
