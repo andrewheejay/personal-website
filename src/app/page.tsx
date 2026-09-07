@@ -113,12 +113,12 @@ export default function Home() {
                 <Link
                   href={`/built/${project.slug}`}
                   data-block
-                  className="group block -mx-3 px-3 py-3 rounded-md transition-colors hover:bg-fg/[0.04]"
+                  className="group block py-3"
                 >
                   {row}
                 </Link>
               ) : (
-                <div className="-mx-3 px-3 py-3">{row}</div>
+                <div className="py-3">{row}</div>
               )}
             </li>
           );
