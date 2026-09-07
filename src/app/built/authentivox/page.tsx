@@ -8,40 +8,40 @@ export const metadata: Metadata = {
 
 function CodeBlock({ children }: { children: string }) {
   return (
-    <pre className="rounded-md border border-ivory/10 bg-ivory/5 p-4 overflow-x-auto">
-      <code className="font-mono text-xs text-ivory/80 whitespace-pre">{children}</code>
+    <pre className="rounded-md border border-fg/10 bg-fg/5 p-4 overflow-x-auto">
+      <code className="font-mono text-code text-fg whitespace-pre">{children}</code>
     </pre>
   );
 }
 
 export default function Authentivox() {
   return (
-    <div className="text-ivory text-base leading-relaxed">
+    <div className="text-fg text-body">
 
       {/* Header */}
-      <header className="space-y-3 pb-8 border-b border-ivory/10">
-        <Link href="/" className="text-sm text-ivory/50 hover:text-ivory lowercase underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">
+      <header className="space-y-3 pb-8 border-b border-fg/10">
+        <Link href="/" className="inline-flex items-center min-h-[24px] text-meta lowercase">
           ← back
         </Link>
         <div className="flex items-baseline gap-3 flex-wrap">
-          <h1 className="text-xl font-medium lowercase text-ivory">authentivox</h1>
-          <span className="font-mono text-xs text-ivory/40">2023</span>
+          <h1 className="font-bold text-title lowercase text-fg">authentivox</h1>
+          <span className="text-body text-fg">2023</span>
         </div>
-        <p className="text-ivory/60 lowercase">real-time voice phishing detection</p>
-        <div className="flex gap-2 flex-wrap font-mono text-xs text-ivory/50 lowercase">
+        <p className="text-lede text-fg lowercase max-w-measure">real-time voice phishing detection</p>
+        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
           {["python", "machine-learning", "audio", "random-forest", "librosa"].map((tag) => (
-            <span key={tag} className="rounded border border-ivory/15 px-2 py-0.5">{tag}</span>
+            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
           ))}
         </div>
-        <div className="flex gap-4 text-sm text-ivory/50 lowercase pt-1">
-          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
+        <div className="flex gap-4 text-meta text-fg lowercase pt-1">
+          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
           <span>published in int&apos;l journal of steam</span>
           <span>ksef silver medal</span>
         </div>
       </header>
 
       {/* Opening */}
-      <section className="py-8 space-y-4 lowercase text-ivory/80">
+      <section className="py-8 space-y-4 lowercase text-fg max-w-measure">
         <p>
           my grandmother lost around $45,000 to a phishing scam. the money was bad enough, but the part that stayed with me was what it did to her afterward: she carried it quietly, feeling she had let the family down. watching that is what made this real to me. phishing isn&apos;t an abstract security topic when it&apos;s someone you love sitting with that kind of shame.
         </p>
@@ -51,9 +51,9 @@ export default function Authentivox() {
       </section>
 
       {/* What I built */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what i built</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what i built</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             authentivox is a binary classifier that listens to short audio frames and decides whether each one is a real human voice or an ai-generated one. the constraint that shaped every decision was the &quot;real-time, on a phone&quot; part. a model that needs a gpu to keep up is useless to someone standing in a kitchen taking a scam call.
           </p>
@@ -72,7 +72,7 @@ bandwidth   = librosa.feature.spectral_bandwidth(y=y, sr=sr)
 roll_off    = librosa.feature.spectral_rolloff(y=y, sr=sr)
 zero_cross  = librosa.feature.zero_crossing_rate(y=y)
 mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
-        <p className="lowercase text-ivory/80">then fit the forest, repeated across 28 random 70:30 splits:</p>
+        <p className="lowercase text-fg max-w-measure">then fit the forest, repeated across 28 random 70:30 splits:</p>
         <CodeBlock>{`for i in range(28):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=i)
 
@@ -80,7 +80,7 @@ mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
     model.fit(X_train, y_train)
     preds = model.predict(X_test)
     # accuracy, precision, recall, F1, MCC, ROC-AUC per run`}</CodeBlock>
-        <div className="space-y-4 lowercase text-ivory/80">
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             that&apos;s the whole engine. the interesting work isn&apos;t the model call, it&apos;s choosing features that expose what a voice-conversion model can&apos;t fake and picking a classifier light enough to live on a phone.
           </p>
@@ -91,9 +91,9 @@ mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
       </section>
 
       {/* The hard part */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">the hard part</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">the hard part</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             the data barely exists. that&apos;s the real obstacle in this whole problem space, and it&apos;s a direct consequence of what the crime is. actual voice phishing recordings are tied up in active criminal cases and stuffed with victims&apos; personal information, so they almost never get released publicly. you can&apos;t just download a corpus of real scam calls to train on.
           </p>
@@ -104,9 +104,9 @@ mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
       </section>
 
       {/* Outcome */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">outcome</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">outcome</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             the random forest model hit 98.46% average accuracy, with precision at 0.99 and recall at 0.98 across the 28 runs — matching, and slightly exceeding, the 95.93% the published paper reports. getting there took going back and re-verifying the work instead of just trusting the old number: the script that built the original feature dataset was lost, and a from-scratch reconstruction that pooled every raw audio frame ran into a real 8-real-vs-56-fake class imbalance, landing at 94.18% accuracy but only 0.55 recall. digging through my old project files turned up the actual precomputed, already-balanced dataset behind the original result, and training on that is what reproduced the paper&apos;s numbers for real.
           </p>
@@ -117,17 +117,25 @@ mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
       </section>
 
       {/* What's next */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what&apos;s next</h2>
-        <p className="lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what&apos;s next</h2>
+        <p className="lowercase text-fg max-w-measure">
           the obvious extension is the thing the constraint was always pointing at: a mobile app that runs the classifier on a live call and warns the user mid-conversation. the model&apos;s light enough for it. the harder, more interesting problem is the data one, finding an ethical path to training signal that looks like real scams instead of cloned celebrity speeches.
         </p>
       </section>
 
       {/* Footer */}
-      <footer className="pt-8 border-t border-ivory/10 flex gap-4 text-sm text-ivory/50 lowercase">
-        <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
-        <Link href="/" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">← back to home</Link>
+      <footer className="pt-8 border-t border-fg/10 space-y-6 lowercase">
+        <nav aria-label="more projects" className="flex flex-wrap justify-start gap-x-8 gap-y-2 text-meta">
+          <Link href="/built/motion-segmentation" className="inline-flex items-center min-h-[24px]">
+            ← newer · motion segmentation (2024)
+          </Link>
+        </nav>
+        <div className="flex gap-x-5 gap-y-2 flex-wrap text-meta text-fg">
+          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="mailto:andrew.heejay.lee@gmail.com" className="inline-flex items-center min-h-[24px]">andrew.heejay.lee@gmail.com</a>
+          <Link href="/" className="inline-flex items-center min-h-[24px]">← all projects</Link>
+        </div>
       </footer>
 
     </div>

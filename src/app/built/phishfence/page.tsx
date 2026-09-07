@@ -8,34 +8,34 @@ export const metadata: Metadata = {
 
 export default function Phishfence() {
   return (
-    <div className="text-ivory text-base leading-relaxed">
+    <div className="text-fg text-body">
 
       {/* Header */}
-      <header className="space-y-3 pb-8 border-b border-ivory/10">
-        <Link href="/" className="text-sm text-ivory/50 hover:text-ivory lowercase underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">
+      <header className="space-y-3 pb-8 border-b border-fg/10">
+        <Link href="/" className="inline-flex items-center min-h-[24px] text-meta lowercase">
           ← back
         </Link>
         <div className="flex items-baseline gap-3 flex-wrap">
-          <h1 className="text-xl font-medium lowercase text-ivory">phishfence</h1>
-          <span className="font-mono text-xs text-ivory/40">2025</span>
+          <h1 className="font-bold text-title lowercase text-fg">phishfence</h1>
+          <span className="text-body text-fg">2025</span>
         </div>
-        <p className="text-ivory/60 lowercase">phishing email detection that explains itself</p>
-        <div className="flex gap-2 flex-wrap font-mono text-xs text-ivory/50 lowercase">
+        <p className="text-lede text-fg lowercase max-w-measure">phishing email detection that explains itself</p>
+        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
           {["bert", "nlp", "explainable-ai", "shap", "gemini", "flask", "python"].map((tag) => (
-            <span key={tag} className="rounded border border-ivory/15 px-2 py-0.5">{tag}</span>
+            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
           ))}
         </div>
-        <div className="flex gap-4 text-sm text-ivory/50 lowercase pt-1">
-          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
-          <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">poster →</a>
+        <div className="flex gap-4 text-meta text-fg lowercase pt-1">
+          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">poster →</a>
           <span>bu rise data science practicum</span>
         </div>
       </header>
 
       {/* Opening */}
-      <section className="py-8 space-y-4 lowercase text-ivory/80">
+      <section className="py-8 space-y-4 lowercase text-fg max-w-measure">
         <p>
-          after authentivox, i kept circling the same problem from a different angle. the voice work taught me you could catch a scam with a model. what it didn&apos;t do was help the person understand why the thing in front of them was dangerous. that gap matters, because the people who lose the most to phishing are usually the ones least equipped to read the warning signs: older, less technical, the same kind of person my grandmother was when she lost around $45,000 to a scam. a detector that just says &quot;this is phishing&quot; doesn&apos;t teach anyone anything. it asks them to trust a black box, and people who&apos;ve already been burned have every reason not to.
+          after <Link href="/built/authentivox">authentivox</Link>, i kept circling the same problem from a different angle. the voice work taught me you could catch a scam with a model. what it didn&apos;t do was help the person understand why the thing in front of them was dangerous. that gap matters, because the people who lose the most to phishing are usually the ones least equipped to read the warning signs: older, less technical, the same kind of person my grandmother was when she lost around $45,000 to a scam. a detector that just says &quot;this is phishing&quot; doesn&apos;t teach anyone anything. it asks them to trust a black box, and people who&apos;ve already been burned have every reason not to.
         </p>
         <p>
           so at the bu rise data science practicum, three of us built phishfence around a different goal: match a state-of-the-art phishing classifier on accuracy, but make every decision explain itself in language a non-technical person can actually use. i was first author on the project. my work covered the non-bert modeling, the explainability layer, and the web app that put it in front of a user.
@@ -43,9 +43,9 @@ export default function Phishfence() {
       </section>
 
       {/* What we built */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what we built</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what we built</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             phishfence is a pipeline: a raw email goes in, gets preprocessed and tokenized, runs through a classifier, and comes back out with both a verdict and a plain-language explanation of that verdict. the explanation is the point, not an add-on.
           </p>
@@ -65,9 +65,9 @@ export default function Phishfence() {
       </section>
 
       {/* The hard part */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">the hard part</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">the hard part</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             bert can only read 512 tokens at a time, and real emails are routinely longer than that. that single constraint shaped a surprising amount of the build. you can&apos;t just feed a long phishing email to the model; you have to chunk it into segments under the limit, embed each chunk, and pool the results back into one representation. every step of that costs you something. splitting an email mid-thought breaks the contextual continuity that bert is supposed to be good at, and the pooled representation is a compromise, not the real thing. we measured the cost: chunked long inputs classified less accurately than ones that fit in a single window.
           </p>
@@ -78,9 +78,9 @@ export default function Phishfence() {
       </section>
 
       {/* Outcome */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">outcome</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">outcome</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             the fine-tuned bert model reached 99.31% accuracy (bert-large-uncased), with precision and recall both above 99%, matching leading phishing classifiers. more important for what we set out to do, the shap-to-gemini layer turned those classifications into explanations a non-technical user could read, and the flask app made the whole thing usable by someone who isn&apos;t a data scientist. we presented phishfence at the bu rise poster symposium, and i was first author on the writeup.
           </p>
@@ -91,17 +91,26 @@ export default function Phishfence() {
       </section>
 
       {/* What's next */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what&apos;s next</h2>
-        <p className="lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what&apos;s next</h2>
+        <p className="lowercase text-fg max-w-measure">
           the natural extensions are the ones that widen access and freshen the data: a browser extension or mobile app instead of a single web page, and a path to training on more current, cross-platform scam data rather than a frozen corpus. architectures like roberta or distilbert could trade a little accuracy for the speed and footprint a real deployment needs. the version that helps someone like my grandmother is the one that lives in the place she&apos;d actually encounter the scam, not on a website she&apos;d have to know to visit.
         </p>
       </section>
 
       {/* Footer */}
-      <footer className="pt-8 border-t border-ivory/10 flex gap-4 text-sm text-ivory/50 lowercase">
-        <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
-        <Link href="/" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">← back to home</Link>
+      <footer className="pt-8 border-t border-fg/10 space-y-6 lowercase">
+        <nav aria-label="more projects" className="flex flex-wrap justify-end gap-x-8 gap-y-2 text-meta">
+          <Link href="/built/motion-segmentation" className="inline-flex items-center min-h-[24px]">
+            older · motion segmentation (2024) →
+          </Link>
+        </nav>
+        <div className="flex gap-x-5 gap-y-2 flex-wrap text-meta text-fg">
+          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">poster →</a>
+          <a href="mailto:andrew.heejay.lee@gmail.com" className="inline-flex items-center min-h-[24px]">andrew.heejay.lee@gmail.com</a>
+          <Link href="/" className="inline-flex items-center min-h-[24px]">← all projects</Link>
+        </div>
       </footer>
 
     </div>

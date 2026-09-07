@@ -1,30 +1,141 @@
 @import "tailwindcss";
 
+/* Semantic tokens indirect through runtime variables so both themes swap
+   cleanly. Tailwind's opacity modifiers (text-fg/60) still work, because v4
+   emits color-mix() and resolves the indirection at computed-value time. */
 @theme {
+  --color-bg: var(--surface);
+  --color-fg: var(--content);
+  --color-link: var(--accent);
+  --color-link-hover: var(--accent-hover);
+  --color-todo: var(--flag);
+
+  /* The two brand constants, kept so the identity survives the theme split. */
   --color-ivory: #F4F1EB;
   --color-ink: #0B0C0C;
-  --color-todo: #D9A441;
+
+  --font-sans: Times, "Times New Roman", "Liberation Serif", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Type roles. One sans size, one weight — hierarchy comes from color and
+     space, not from type. The role names are kept so markup stays readable. */
+  /* The name sits one step above body, the ratio both references use
+     (18/15 and 21/18). 19px over a 16px body is 1.19x. */
+  --text-display: 1.1875rem;
+  --text-display--line-height: 1.25;
+  --text-title: 1rem;
+  --text-title--line-height: 1.65;
+  --text-lede: 1rem;
+  --text-lede--line-height: 1.65;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-note: 1rem;
+  --text-note--line-height: 1.65;
+  --text-meta: 1rem;
+  --text-meta--line-height: 1.65;
+  /* Monospace survives only where it is load-bearing: code and the ASCII
+     architecture diagram, which depend on fixed-width alignment. */
+  --text-code: 0.875rem;
+  --text-code--line-height: 1.6;
+
+  /* Reading measure: 64ch, matching the ~644px column the reference holds at
+     this size. Renders at roughly 70-75 characters. */
+  --container-measure: 64ch;
 }
 
+/* --- Themes -------------------------------------------------------------
+   Dark is the base. Light is applied when the visitor's OS asks for it, and
+   either theme can be pinned with data-theme, which must outrank the query.
+   Link blue is tuned per surface: one value cannot clear 4.5:1 on both
+   #0B0C0C and #FFFFFF. */
+
+:root {
+  color-scheme: dark;
+  --surface: #0B0C0C;
+  --content: #F4F1EB;
+  /* Chosen deliberately to match the light theme's link blue exactly. This is
+     2.08:1 on #0B0C0C and does NOT meet WCAG AA (4.5:1); the hover is 1.54:1.
+     Do not "fix" this back to a lightened blue without asking. */
+  /* Farza's link blue, from his site's --framer-link-text-color. 6.53:1 on
+     #0B0C0C; hover 5.56:1. Both clear AA. His hover goes *darker*, which is
+     his choice, not the usual dark-theme direction. */
+  --accent: #0099FF;
+  --accent-hover: #0088FF;
+  --flag: #D9A441;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --surface: #FFFFFF;
+    --content: #000000;      /* pure black, 21:1 */
+    --accent: #0000EE;       /* the browser's own link blue, 9.4:1 */
+    --accent-hover: #0000B3;
+    --flag: #8A5A00;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --surface: #FFFFFF;
+  --content: #000000;
+  --accent: #0000EE;
+  --accent-hover: #0000B3;
+  --flag: #8A5A00;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0B0C0C;
+  --content: #F4F1EB;
+  --accent: #0099FF;
+  --accent-hover: #0088FF;
+  --flag: #D9A441;
+}
+
+/* System serif, so nothing is downloaded for body text. No antialiased
+   smoothing here: it thins light-on-dark text, and Times is delicate enough
+   already in the dark theme. */
+body {
+  text-rendering: optimizeLegibility;
+}
+
+/* Links are blue and underlined at rest, so they are identifiable without
+   hover and without color alone carrying the signal. The underline is static:
+   hover only lightens the blue, with no bar sweeping in underneath. */
 a {
-  position: relative;
-  text-decoration: none !important;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.3s ease;
 }
 
-a::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--color-ivory);
-  transform: scaleX(0);
-  transform-origin: top left;
-  transition: transform 0.3s ease;
+a:hover {
+  color: var(--color-link-hover);
 }
 
-a:hover::before {
-  transform: scaleX(1);
+/* Block-level links (whole project rows) carry their affordance structurally;
+   the text treatment lives on the heading inside them. */
+a[data-block] {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}
+
+/* Browser surfaces belong to the design system too. */
+:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+html {
+  scrollbar-color: color-mix(in srgb, var(--color-fg) 25%, transparent) var(--color-bg);
+  caret-color: var(--color-fg);
 }

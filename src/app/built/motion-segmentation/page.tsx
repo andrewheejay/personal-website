@@ -8,39 +8,39 @@ export const metadata: Metadata = {
 
 function CodeBlock({ children }: { children: string }) {
   return (
-    <pre className="rounded-md border border-ivory/10 bg-ivory/5 p-4 overflow-x-auto">
-      <code className="font-mono text-xs text-ivory/80 whitespace-pre">{children}</code>
+    <pre className="rounded-md border border-fg/10 bg-fg/5 p-4 overflow-x-auto">
+      <code className="font-mono text-code text-fg whitespace-pre">{children}</code>
     </pre>
   );
 }
 
 export default function MotionSegmentation() {
   return (
-    <div className="text-ivory text-base leading-relaxed">
+    <div className="text-fg text-body">
 
       {/* Header */}
-      <header className="space-y-3 pb-8 border-b border-ivory/10">
-        <Link href="/" className="text-sm text-ivory/50 hover:text-ivory lowercase underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">
+      <header className="space-y-3 pb-8 border-b border-fg/10">
+        <Link href="/" className="inline-flex items-center min-h-[24px] text-meta lowercase">
           ← back
         </Link>
         <div className="flex items-baseline gap-3 flex-wrap">
-          <h1 className="text-xl font-medium lowercase text-ivory">motion segmentation</h1>
-          <span className="font-mono text-xs text-ivory/40">2024</span>
+          <h1 className="font-bold text-title lowercase text-fg">motion segmentation</h1>
+          <span className="text-body text-fg">2024</span>
         </div>
-        <p className="text-ivory/60 lowercase">benchmarking seven imu segmentation algorithms, and testing whether a neural net could match them</p>
-        <div className="flex gap-2 flex-wrap font-mono text-xs text-ivory/50 lowercase">
+        <p className="text-lede text-fg lowercase max-w-measure">benchmarking seven imu segmentation algorithms, and testing whether a neural net could match them</p>
+        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
           {["python", "signal-processing", "imu", "tensorflow", "scikit-learn", "time-series"].map((tag) => (
-            <span key={tag} className="rounded border border-ivory/15 px-2 py-0.5">{tag}</span>
+            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
           ))}
         </div>
-        <div className="flex gap-4 text-sm text-ivory/50 lowercase pt-1">
-          <a href="https://github.com/andrewheejay/motion-segmentation" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
+        <div className="flex gap-4 text-meta text-fg lowercase pt-1">
+          <a href="https://github.com/andrewheejay/motion-segmentation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
           <span>korea science service international research program</span>
         </div>
       </header>
 
       {/* Opening */}
-      <section className="py-8 space-y-4 lowercase text-ivory/80">
+      <section className="py-8 space-y-4 lowercase text-fg max-w-measure">
         <p>
           this was the problem they handed me. at the korea science service international research program, working under professor jong gwan lim of mokwon university, i was given a task in motion segmentation: take raw motion-sensor data and figure out, automatically, where one movement ends and the next begins. i&apos;d never worked with an imu before. i&apos;d never done signal processing before. so the first real obstacle wasn&apos;t the code, it was understanding what i was even looking at.
         </p>
@@ -50,9 +50,9 @@ export default function MotionSegmentation() {
       </section>
 
       {/* What I set out to do */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what i set out to do, and what i actually built</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what i set out to do, and what i actually built</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             my ambition going in was to invent something. there are seven well-known segmentation algorithms in the literature, baron, benbasat, choi, eps, guenterberg, kim, and bang, and i wanted to combine their ideas into a new, better method of my own. i tried. it didn&apos;t work. the novel technique i was reaching for never beat the methods it was built from, and at some point i had to be honest that i&apos;d aimed past what i could pull off in the time i had. that failure is the most useful thing the project gave me, so i&apos;m not going to dress it up.
           </p>
@@ -66,9 +66,9 @@ export default function MotionSegmentation() {
       </section>
 
       {/* Architecture */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">architecture</h2>
-        <p className="lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">architecture</h2>
+        <p className="lowercase text-fg max-w-measure">
           the classical benchmark followed the same shape for each of the seven algorithms: load the signal and its ground truth, sweep the parameters, score every configuration.
         </p>
         <CodeBlock>{`import motionSegLib as motion
@@ -79,22 +79,22 @@ for ii in range(len(dataRepository)):
     target = np.loadtxt(targetRepository[ii])
     # run the segmentation method, compare predicted
     # boundaries to target, record ACC / UMBR / UMBL / time delay`}</CodeBlock>
-        <p className="lowercase text-ivory/80">each method&apos;s results got ranked by a single weighted score so the seven could be compared on equal footing:</p>
+        <p className="lowercase text-fg max-w-measure">each method&apos;s results got ranked by a single weighted score so the seven could be compared on equal footing:</p>
         <CodeBlock>{`weights = {'umbR': 0.3, 'umbL': 0.3, 'acc': 0.2, 'td': 0.2}
 df['weighted_score'] = (
     df['UMBR'] * weights['umbR'] + df['UMBL'] * weights['umbL'] +
     df['ACC']  * weights['acc']  + df['timedelay'] * weights['td']
 )
 top3 = df.sort_values('weighted_score').head(3)`}</CodeBlock>
-        <p className="lowercase text-ivory/80">
+        <p className="lowercase text-fg max-w-measure">
           for the learned approach, the same preprocessed signal got turned into lagged-difference feature vectors and handed to an mlp classifier and a tensorflow model, scored against the same boundary metrics as the classical seven, though i evaluated both on the same data they were trained on rather than holding out a test set, so these numbers read as a fit check, not a generalization result.
         </p>
       </section>
 
       {/* Outcome */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">outcome</h2>
-        <div className="space-y-4 lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">outcome</h2>
+        <div className="space-y-4 lowercase text-fg max-w-measure">
           <p>
             i implemented and benchmarked seven motion segmentation algorithms on real imu data, built a fair multi-metric scoring system to compare them, and tested whether mlp and tensorflow models could match the classical methods on the same task. i wrote up the work as a formal technical report and presented the findings on model performance and latency to my faculty mentors and program peers.
           </p>
@@ -105,17 +105,28 @@ top3 = df.sort_values('weighted_score').head(3)`}</CodeBlock>
       </section>
 
       {/* What I took from it */}
-      <section className="py-8 border-t border-ivory/10 space-y-4">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ivory/40">what i took from it</h2>
-        <p className="lowercase text-ivory/80">
+      <section className="py-8 border-t border-fg/10 space-y-4">
+        <h2 className="font-bold text-body text-fg">what i took from it</h2>
+        <p className="lowercase text-fg max-w-measure">
           two things stuck. first, that the ambitious version of a problem and the achievable version are often different problems, and knowing when to switch from one to the other is a skill, not a defeat. second, that being able to read a noisy signal, the thing that intimidated me most at the start, became the part i&apos;m now most comfortable reaching for. the phishing work that came later leaned on audio feature extraction, which is the same muscle: turning a messy continuous signal into something a model can learn from.
         </p>
       </section>
 
       {/* Footer */}
-      <footer className="pt-8 border-t border-ivory/10 flex gap-4 text-sm text-ivory/50 lowercase">
-        <a href="https://github.com/andrewheejay/motion-segmentation" target="_blank" rel="noopener noreferrer" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">github →</a>
-        <Link href="/" className="hover:text-ivory underline underline-offset-2 decoration-ivory/20 hover:decoration-ivory/60">← back to home</Link>
+      <footer className="pt-8 border-t border-fg/10 space-y-6 lowercase">
+        <nav aria-label="more projects" className="flex flex-wrap justify-between gap-x-8 gap-y-2 text-meta">
+          <Link href="/built/phishfence" className="inline-flex items-center min-h-[24px]">
+            ← newer · phishfence (2025)
+          </Link>
+          <Link href="/built/authentivox" className="inline-flex items-center min-h-[24px]">
+            older · authentivox (2023) →
+          </Link>
+        </nav>
+        <div className="flex gap-x-5 gap-y-2 flex-wrap text-meta text-fg">
+          <a href="https://github.com/andrewheejay/motion-segmentation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="mailto:andrew.heejay.lee@gmail.com" className="inline-flex items-center min-h-[24px]">andrew.heejay.lee@gmail.com</a>
+          <Link href="/" className="inline-flex items-center min-h-[24px]">← all projects</Link>
+        </div>
       </footer>
 
     </div>
