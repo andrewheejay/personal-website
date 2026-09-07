@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "phishfence — andrew heejay lee",
+  title: "phishfence — Andrew Lee",
   description: "Phishing email detection that explains itself — BERT classification paired with SHAP and an LLM to translate the verdict into plain language.",
 };
 

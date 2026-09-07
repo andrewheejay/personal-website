@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "authentivox — andrew heejay lee",
+  title: "authentivox — Andrew Lee",
   description: "Real-time voice phishing detection with a random forest classifier light enough to run without a GPU.",
 };
 

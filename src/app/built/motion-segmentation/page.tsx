@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "motion segmentation — andrew heejay lee",
+  title: "motion segmentation — Andrew Lee",
   description: "Benchmarking seven IMU segmentation algorithms, and testing whether a neural net could match them.",
 };
 

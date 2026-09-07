@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import { ThemeToggle } from "./components/ThemeToggle";
 import "./globals.css";
@@ -10,24 +10,20 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const description =
-  "student building machine learning systems — phishing detection, motion segmentation, and an ai wardrobe, with the limitations written down.";
-
+/* No openGraph or twitter blocks and no og:image on purpose. With none of
+   them present, link previews fall back to the title, the description and the
+   domain — the three plain lines justinwang.xyz shows. Adding any og:* tag
+   back changes the card's shape. */
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrewheejay.com"),
-  title: "andrew heejay lee",
-  description,
-  openGraph: {
-    title: "andrew heejay lee",
-    description,
-    siteName: "andrew heejay lee",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "andrew heejay lee",
-    description,
-  },
+  title: "Andrew Lee",
+  description: "the personal website of Andrew Lee",
+};
+
+/* themeColor belongs to the viewport export, not metadata — Next silently
+   drops it from metadata and only warns at build time. This paints the
+   browser chrome to match the active theme. */
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
     { media: "(prefers-color-scheme: dark)", color: "#0B0C0C" },
