@@ -45,7 +45,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={plexMono.variable}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="antialiased min-h-screen bg-bg font-sans text-fg selection:bg-fg selection:text-bg">
