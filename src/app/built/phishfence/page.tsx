@@ -26,7 +26,7 @@ export default function Phishfence() {
           ))}
         </div>
         <div className="flex gap-4 text-meta text-fg lowercase pt-1">
-          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">poster →</a>
           <span>bu rise data science practicum</span>
         </div>
@@ -106,7 +106,7 @@ export default function Phishfence() {
           </Link>
         </nav>
         <div className="flex gap-x-5 gap-y-2 flex-wrap text-meta text-fg">
-          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">poster →</a>
           <a href="mailto:andrew.heejay.lee@gmail.com" className="inline-flex items-center min-h-[24px]">andrew.heejay.lee@gmail.com</a>
           <Link href="/" className="inline-flex items-center min-h-[24px]">← all projects</Link>

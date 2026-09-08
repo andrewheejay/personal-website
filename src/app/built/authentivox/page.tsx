@@ -34,7 +34,7 @@ export default function Authentivox() {
           ))}
         </div>
         <div className="flex gap-4 text-meta text-fg lowercase pt-1">
-          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <span>published in int&apos;l journal of steam</span>
           <span>ksef silver medal</span>
         </div>
@@ -132,7 +132,7 @@ mfcc        = librosa.feature.mfcc(y=y, sr=sr)`}</CodeBlock>
           </Link>
         </nav>
         <div className="flex gap-x-5 gap-y-2 flex-wrap text-meta text-fg">
-          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px] normal-case">GitHub →</a>
+          <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <a href="mailto:andrew.heejay.lee@gmail.com" className="inline-flex items-center min-h-[24px]">andrew.heejay.lee@gmail.com</a>
           <Link href="/" className="inline-flex items-center min-h-[24px]">← all projects</Link>
         </div>
