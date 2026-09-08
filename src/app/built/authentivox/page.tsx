@@ -28,11 +28,9 @@ export default function Authentivox() {
           <span className="text-body text-fg">2023</span>
         </div>
         <p className="text-lede text-fg lowercase max-w-measure">real-time voice phishing detection</p>
-        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
-          {["python", "machine-learning", "audio", "random-forest", "librosa"].map((tag) => (
-            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
-          ))}
-        </div>
+        <p className="text-body text-fg lowercase max-w-measure">
+          {["python", "machine-learning", "audio", "random-forest", "librosa"].join("; ")}
+        </p>
         <div className="flex gap-4 text-meta text-fg lowercase pt-1">
           <a href="https://github.com/andrewheejay/Authentivox" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <span>published in int&apos;l journal of steam</span>

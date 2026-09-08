@@ -5,7 +5,7 @@ Generalized outline for any individual project page (e.g. `/built/phishfence`). 
 ## 1. Header (always)
 - `← back` link to the homepage log
 - Project title, year
-- Tag row for stack/domain (e.g. `bert` `nlp` `python`) — only tags that are actually true
+- Tag line for stack/domain, plain text joined with `; ` (e.g. `bert; nlp; python`) — only tags that are actually true. Keep them as an array in the source and `.join("; ")`, so they stay data rather than a hand-typed string
 - Inline links: `github →`, `demo →`, `poster →` — only the ones that exist; omit the rest entirely, don't grey them out
 
 ## 2. Opening paragraph — the real why (always)

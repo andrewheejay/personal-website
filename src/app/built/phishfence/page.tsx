@@ -20,11 +20,9 @@ export default function Phishfence() {
           <span className="text-body text-fg">2025</span>
         </div>
         <p className="text-lede text-fg lowercase max-w-measure">phishing email detection that explains itself</p>
-        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
-          {["bert", "nlp", "explainable-ai", "shap", "gemini", "flask", "python"].map((tag) => (
-            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
-          ))}
-        </div>
+        <p className="text-body text-fg lowercase max-w-measure">
+          {["bert", "nlp", "explainable-ai", "shap", "gemini", "flask", "python"].join("; ")}
+        </p>
         <div className="flex gap-4 text-meta text-fg lowercase pt-1">
           <a href="https://github.com/thomasha1310/phishfence" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <a href="https://github.com/thomasha1310/phishfence/blob/main/Poster.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">poster →</a>

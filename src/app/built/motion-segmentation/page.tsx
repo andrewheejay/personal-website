@@ -28,11 +28,9 @@ export default function MotionSegmentation() {
           <span className="text-body text-fg">2024</span>
         </div>
         <p className="text-lede text-fg lowercase max-w-measure">benchmarking seven imu segmentation algorithms, and testing whether a neural net could match them</p>
-        <div className="flex gap-2 flex-wrap text-body text-fg lowercase">
-          {["python", "signal-processing", "imu", "tensorflow", "scikit-learn", "time-series"].map((tag) => (
-            <span key={tag} className="rounded border border-fg/15 px-2 py-0.5">{tag}</span>
-          ))}
-        </div>
+        <p className="text-body text-fg lowercase max-w-measure">
+          {["python", "signal-processing", "imu", "tensorflow", "scikit-learn", "time-series"].join("; ")}
+        </p>
         <div className="flex gap-4 text-meta text-fg lowercase pt-1">
           <a href="https://github.com/andrewheejay/motion-segmentation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-[24px]">github →</a>
           <span>korea science service international research program</span>
