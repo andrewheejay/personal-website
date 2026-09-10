@@ -17,14 +17,32 @@ const projects: Entry[] = [
         <a href="https://www.dnk.co/" target="_blank" rel="noopener noreferrer">
           dnk
         </a>
-        , a fintech company in korea. a call with cory levy of z fellows sent me
-        to san francisco for the first time. met gagan biyani (udemy), chris
-        farmer (signalfire), and a lot of talented peers.
+        , a fintech company in korea. lead engineer on nexus 2.0, a full-stack
+        rebuild of their internal cms, plus an mcp server that turns session logs
+        into slides, a translation-api localization layer, and a support chatbot
+        backed by an llm-driven internal wiki.
         <span className="block mt-1.5">
-          currently building a context-sharing app.
+          working inside a startup is what got me interested in the startup world
+          itself. i went looking for people in it and crossed paths with cory
+          levy of z fellows, who sent me to san francisco for the first time. met
+          gagan biyani (udemy), chris farmer (signalfire), and a lot of talented
+          peers.
+        </span>
+        <span className="block mt-1.5">
+          that trip is where the current project came from. i came back convinced
+          everyone ends up with a personal agi agent, and that the unsolved part
+          is the infrastructure and the network behind them. currently building a
+          context-sharing app.
         </span>
       </>
     ),
+  },
+  {
+    slug: "lime",
+    year: "2026",
+    name: "lime",
+    blurb:
+      "you forget half of what's in your closet, so you wear the same three outfits anyway. snap a photo and lime tags it, embeds it, and ranks your wardrobe against the weather. solo build, four services.",
   },
   {
     slug: "phishfence",
@@ -89,14 +107,7 @@ export default function Home() {
               <div className="flex items-baseline gap-3">
                 <span className="text-body text-fg shrink-0">{project.year}</span>
                 {project.name && (
-                  <h3
-                    className={
-                      "font-bold text-lede lowercase " +
-                      (project.slug
-                        ? "text-link underline underline-offset-4 transition-colors group-hover:text-link-hover"
-                        : "text-fg")
-                    }
-                  >
+                  <h3 className="font-bold text-lede lowercase text-fg">
                     {project.name}
                   </h3>
                 )}
@@ -104,6 +115,17 @@ export default function Home() {
               <p className="text-note text-fg lowercase mt-1.5 max-w-measure">
                 {project.blurb}
               </p>
+              {/* Nothing else in the row says where it goes: the year and name
+                  read the same whether or not a page exists behind them. This
+                  cue is the affordance, so the name stays plain rather than
+                  competing with a second blue underline. */}
+              {project.slug && (
+                <p className="text-note lowercase mt-1.5">
+                  <span className="text-link underline underline-offset-4 transition-colors group-hover:text-link-hover">
+                    learn more →
+                  </span>
+                </p>
+              )}
             </>
           );
 
