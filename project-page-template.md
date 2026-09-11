@@ -106,6 +106,10 @@ The honesty rule matters more here than anywhere else on the site: an unfinished
 
 Leave `blurb: <Todo>what this is</Todo>` in place until the real text exists. Never ship a fabricated number or a placeholder written as if it were real.
 
+## The link cue
+
+Any entry with a `slug` renders a `learn more →` line under its blurb, and that cue is the row's only link affordance — the project name stays plain `text-fg`. This came out of real feedback: with the name styled as a link and nothing else, a reader couldn't tell whether a row led to a writeup, a repo, or nowhere. Don't restyle the name blue as well; two underlined blue elements in one short row compete, and the row is a block link either way. Entries without a `slug` get no cue, which is what keeps "this goes somewhere" visually distinct from "this is just a note".
+
 ## The check before you commit
 
 Read the blurb out loud and ask: **could a stranger repeat back what this is and why it was hard?** If they could only repeat back that it sounded impressive, sentence 1 is wrong.

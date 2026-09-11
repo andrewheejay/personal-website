@@ -38,8 +38,10 @@
   --text-code: 0.875rem;
   --text-code--line-height: 1.6;
 
-  /* Reading measure: 64ch, matching the ~644px column the reference holds at
-     this size. Renders at roughly 70-75 characters. */
+  /* Reading measure: 64ch. `ch` is the font's digit advance, and Times' is
+     0.5em, so this is ~512px at a 16px body — narrower than the 624px
+     max-w-2xl column, which makes this the binding constraint on prose.
+     Renders at roughly 70 characters. Swapping the sans changes this number. */
   --container-measure: 64ch;
 }
 
@@ -53,9 +55,6 @@
   color-scheme: dark;
   --surface: #0B0C0C;
   --content: #F4F1EB;
-  /* Chosen deliberately to match the light theme's link blue exactly. This is
-     2.08:1 on #0B0C0C and does NOT meet WCAG AA (4.5:1); the hover is 1.54:1.
-     Do not "fix" this back to a lightened blue without asking. */
   /* Farza's link blue, from his site's --framer-link-text-color. 6.53:1 on
      #0B0C0C; hover 5.56:1. Both clear AA. His hover goes *darker*, which is
      his choice, not the usual dark-theme direction. */

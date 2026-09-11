@@ -38,8 +38,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // suppressHydrationWarning: the pre-paint script below stamps data-theme onto
+  // <html> before React hydrates, so the client tree legitimately differs from
+  // the server's. Without it, every visitor who has ever used the toggle gets a
+  // hydration error in the console. It covers this element's attributes only,
+  // not its subtree.
   return (
-    <html lang="en" className={plexMono.variable}>
+    <html lang="en" className={plexMono.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
