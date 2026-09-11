@@ -12,6 +12,7 @@ const projects: Entry[] = [
   {
     slug: "2026",
     year: "2026",
+    name: "out of the notebook",
     blurb:
       "three years of research, and then the year i wanted to build things people actually use instead. lime solo, internal tooling at a korean fintech, and the sf trip that decided what's next.",
   },

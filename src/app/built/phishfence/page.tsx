@@ -100,7 +100,7 @@ export default function Phishfence() {
       <footer className="pt-8 border-t border-fg/10 space-y-6 lowercase">
         <nav aria-label="more projects" className="flex flex-wrap justify-between gap-x-8 gap-y-2 text-meta">
           <Link href="/built/2026" className="inline-flex items-center min-h-[24px]">
-            ← newer · 2026
+            ← newer · out of the notebook (2026)
           </Link>
           <Link href="/built/motion-segmentation" className="inline-flex items-center min-h-[24px]">
             older · motion segmentation (2024) →

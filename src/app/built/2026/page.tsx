@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "2026 — Andrew Lee",
+  title: "out of the notebook — Andrew Lee",
   description: "The year I stopped doing research and started building — Lime, internal tooling at a Korean fintech, and the San Francisco trip that decided what came next.",
 };
 
@@ -24,7 +24,8 @@ export default function Year2026() {
           ← back
         </Link>
         <div className="flex items-baseline gap-3 flex-wrap">
-          <h1 className="font-bold text-title lowercase text-fg">2026</h1>
+          <h1 className="font-bold text-title lowercase text-fg">out of the notebook</h1>
+          <span className="text-body text-fg">2026</span>
         </div>
         <p className="text-lede text-fg lowercase max-w-measure">the year i stopped doing research and started building</p>
         <p className="text-body text-fg lowercase max-w-measure">
