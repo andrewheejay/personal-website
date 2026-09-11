@@ -31,7 +31,7 @@ const projects: Entry[] = [
     year: "2026",
     name: "dnk",
     blurb:
-      "lead engineer on the full-stack rebuild of dnk's internal cms, plus three ai tools around it. slides from session logs, a translation layer, and a support chatbot backed by the internal wiki. ai engineer, ongoing.",
+      "lead engineer on the full-stack rebuild of dnk's internal cms, plus three ai tools around it. slides from session logs, a translation layer, and a support chatbot backed by the internal wiki. ai engineer, summer 2026.",
   },
   {
     slug: "lime",
