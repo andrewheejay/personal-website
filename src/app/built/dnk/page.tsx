@@ -32,10 +32,10 @@ export default function Dnk() {
       {/* Opening */}
       <section className="py-8 space-y-4 lowercase text-fg max-w-measure">
         <p>
-          this one was a job, not an itch, and the page should say so. i joined dnk, a fintech company in korea, as an ai engineer, and nearly everything i&apos;ve built there is internal: the tools the company runs on, not the product its customers see.
+          there&apos;s a line about how if you love what you do, you never work a day in your life. i&apos;d always heard that as the kind of thing people say rather than the kind of thing that happens. this summer is the first time it happened to me. i was in it constantly, and none of it registered as work.
         </p>
         <p>
-          that changes what the work is. nobody picks up an internal tool because they want to, they&apos;re handed it. so the measure isn&apos;t whether it&apos;s impressive, it&apos;s whether people stop working around it.
+          what i was in is internal tooling. i&apos;m the ai engineer at dnk, a fintech company in korea, and nearly everything i built there is the software the company runs on rather than the product its customers see. that changes the measure. nobody picks up an internal tool because they want to, they&apos;re handed it, so the bar isn&apos;t whether it&apos;s impressive. it&apos;s whether people stop working around it.
         </p>
         <p>
           one caveat before the rest: this page stays at the level of what these systems do rather than how they work. it&apos;s an employer&apos;s platform and the implementation isn&apos;t mine to publish, so there is less detail here than on the other pages. that&apos;s a deliberate omission, not a thin project.
