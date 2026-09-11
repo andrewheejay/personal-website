@@ -13,21 +13,10 @@ const projects: Entry[] = [
     year: "2026",
     blurb: (
       <>
-        ai engineer at{" "}
-        <a href="https://www.dnk.co/" target="_blank" rel="noopener noreferrer">
-          dnk
-        </a>
-        , a fintech company in korea. lead engineer on nexus 2.0, a full-stack
-        rebuild of their internal cms, plus an mcp server that turns session logs
-        into slides, a translation-api localization layer, and a support chatbot
-        backed by an llm-driven internal wiki.
-        <span className="block mt-1.5">
-          working inside a startup is what got me interested in the startup world
-          itself. i went looking for people in it and crossed paths with cory
-          levy of z fellows, who sent me to san francisco for the first time. met
-          gagan biyani (udemy), chris farmer (signalfire), and a lot of talented
-          peers.
-        </span>
+        working at dnk got me interested in the startup world itself. i went
+        looking for people in it and crossed paths with cory levy of z fellows,
+        who sent me to san francisco for the first time. met gagan biyani
+        (udemy), chris farmer (signalfire), and a lot of talented peers.
         <span className="block mt-1.5">
           that trip is where the current project came from. i came back convinced
           everyone ends up with a personal agi agent, and that the unsolved part
@@ -36,6 +25,13 @@ const projects: Entry[] = [
         </span>
       </>
     ),
+  },
+  {
+    slug: "dnk",
+    year: "2026",
+    name: "dnk",
+    blurb:
+      "lead engineer on the full-stack rebuild of dnk's internal cms, plus three ai tools around it. slides from session logs, a translation layer, and a support chatbot backed by the internal wiki. ai engineer, ongoing.",
   },
   {
     slug: "lime",

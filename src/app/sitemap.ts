@@ -4,6 +4,7 @@ const BASE_URL = "https://andrewheejay.com";
 
 const ROUTES = [
   "",
+  "/built/dnk",
   "/built/lime",
   "/built/phishfence",
   "/built/motion-segmentation",
