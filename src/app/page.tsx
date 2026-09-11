@@ -10,35 +10,10 @@ type Entry = {
 
 const projects: Entry[] = [
   {
+    slug: "2026",
     year: "2026",
-    blurb: (
-      <>
-        working at dnk got me interested in the startup world itself. i went
-        looking for people in it and crossed paths with cory levy of z fellows,
-        who sent me to san francisco for the first time. met gagan biyani
-        (udemy), chris farmer (signalfire), and a lot of talented peers.
-        <span className="block mt-1.5">
-          that trip is where the current project came from. i came back convinced
-          everyone ends up with a personal agi agent, and that the unsolved part
-          is the infrastructure and the network behind them. currently building a
-          context-sharing app.
-        </span>
-      </>
-    ),
-  },
-  {
-    slug: "dnk",
-    year: "2026",
-    name: "dnk",
     blurb:
-      "lead engineer on the full-stack rebuild of dnk's internal cms, plus three ai tools around it. slides from session logs, a translation layer, and a support chatbot backed by the internal wiki. ai engineer, summer 2026.",
-  },
-  {
-    slug: "lime",
-    year: "2026",
-    name: "lime",
-    blurb:
-      "you forget half of what's in your closet, so you wear the same three outfits anyway. snap a photo and lime tags it, embeds it, and ranks your wardrobe against the weather. solo build, four services.",
+      "three years of research, and then the year i wanted to build things people actually use instead. lime solo, internal tooling at a korean fintech, and the sf trip that decided what's next.",
   },
   {
     slug: "phishfence",
