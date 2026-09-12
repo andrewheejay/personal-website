@@ -92,9 +92,11 @@
   --flag: #D9A441;
 }
 
-/* System serif, so nothing is downloaded for body text. No antialiased
-   smoothing here: it thins light-on-dark text, and Times is delicate enough
-   already in the dark theme. */
+/* System serif, so nothing is downloaded for body text. Font smoothing is
+   deliberately ON, but it is set in layout.tsx via Tailwind's `antialiased`
+   class rather than here — don't add a -webkit-font-smoothing rule to this
+   block expecting it to be off, and don't drop the class thinking this rule
+   covers it. */
 body {
   text-rendering: optimizeLegibility;
 }
