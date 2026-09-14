@@ -36,7 +36,7 @@ Two rows:
 Every footer link needs `inline-flex items-center min-h-[24px]` so it clears the 24px touch-target minimum. Never end a page on a back link alone — a reader convinced by the page should have somewhere forward to go.
 
 ## Visual system (applies to all project pages)
-Same system as the homepage — themed background and text via the semantic tokens (`bg-bg`, `text-fg`), blue underlined links, `font-mono` for labels/tags. Check any new page in both light and dark. Use the type-role tokens and the `/60` contrast floor documented in `CLAUDE.md`; don't reach for raw Tailwind sizes. Wrap prose blocks in `max-w-measure`. Clicking from the homepage log into a project page should feel like one site, not a tonal jump. Any placeholder data gets the same amber `[bracketed]` TODO treatment used on the homepage until it's replaced with something real.
+Same system as the homepage — themed background and text via the semantic tokens (`bg-bg`, `text-fg`), blue underlined links, `font-mono` for labels/tags. Check any new page in both light and dark. Use the type-role tokens and the `/60` contrast floor defined in `src/app/globals.css`; don't reach for raw Tailwind sizes. Wrap prose blocks in `max-w-measure`. Clicking from the homepage log into a project page should feel like one site, not a tonal jump. Any placeholder data gets the same amber `[bracketed]` TODO treatment used on the homepage until it's replaced with something real.
 
 ---
 

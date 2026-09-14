@@ -42,5 +42,6 @@ next-env.d.ts
 
 # local tooling and working notes (not published)
 /.claude/
+CLAUDE.md
 /.impeccable/
 /PRODUCT.md
