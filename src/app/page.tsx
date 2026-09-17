@@ -14,7 +14,7 @@ const projects: Entry[] = [
     year: "2026",
     name: "out of the notebook",
     blurb:
-      "three years of research, and then the year i wanted to build things people actually use instead. lime solo, internal tooling at a korean fintech, and the sf trip that decided what's next.",
+      "until this year everything i did happened on a python notebook. this year i decided to try something new: lime, two months as an ai engineer at dnk, a first trip to sf, and the context-sharing app i'm building now.",
   },
   {
     slug: "phishfence",
