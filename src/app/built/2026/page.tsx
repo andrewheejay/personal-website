@@ -109,7 +109,7 @@ Browser --geolocation--> Next.js
             working inside a startup is what got me interested in startups. naturally, i went looking for people in that world, and somewhere in that search i crossed paths with cory levy of z fellows on x. after a 30 minute call, i immediately booked a flight: it was my first time traveling sf, in fact, traveling alone.
           </p>
           <p>
-            attending many events, i met gagan biyani (udemy) and chris farmer (signalfire), zach yadegari (cal ai), aaron edell (aws), jake brooks (triumph labs), robert wachen (etched) and a lot of other builders. at internapalooza, as i listened to sam altman&apos;s talk, i came back with conviction about what to work on. i realized that people having personal agi is an inevitable and not so far future, and that the unsolved part isn&apos;t the agent, it&apos;s the infrastructure and the network behind it.
+            attending many events, i met gagan biyani (udemy) and chris farmer (signalfire), zach yadegari (cal ai), aaron edell (aws), jake brooks (triumph labs), robert wachen (etched) and a lot of other builders. at internapalooza, as i listened to sam altman&apos;s talk, i came back with conviction about what to work on. the models are getting better faster than anyone expected, but robots still can&apos;t do much in the real world, and i became convinced the bottleneck is data, not models.
           </p>
         </div>
       </section>
@@ -118,7 +118,7 @@ Browser --geolocation--> Next.js
       <section className="py-8 border-t border-fg/10 space-y-4">
         <h2 className="font-bold text-body text-fg">now</h2>
         <p className="lowercase text-fg max-w-measure">
-          i&apos;m building a context-sharing app out of that conviction. i&apos;m currently building the first prototype with connectors to claude code, codex, muse, granola, wispr flow, but it&apos;s far from over. i&apos;m working on different projects, but the important takeaway from the year so far is that i just gotta put my head down and keep making more.
+          i&apos;m building a physical ai data company out of that conviction. we&apos;re in the early stages, but i&apos;m working actively with the people i&apos;ve met in the past few months, and i&apos;m excited to keep pushing forward. i&apos;m working on different projects, but the important takeaway from the year so far is that i just gotta put my head down and keep making more.
         </p>
       </section>
 
