@@ -47,55 +47,40 @@ const contactLinks = [
 
 export default function Home() {
   return (
-    <div className="text-fg text-body">
+    <div className="lowercase">
 
-      {/* Identity */}
-      <header className="pb-1">
-        <h1 className="font-bold text-display">Andrew Heejay Lee</h1>
-        <p className="text-lede leading-[1.25] text-fg mt-2 max-w-measure">
-          Math + CS @ Penn
+      {/* Opening. The letter shape both co-founders' pages open with: who,
+          what, where, in one breath. Every claim here is already on this
+          site or on duetlabs.co; nothing is borrowed from their bios. */}
+      <section className="space-y-flow max-w-measure">
+        <p>
+          <strong>hi! i&apos;m andrew.</strong> i&apos;m a co-founder @{" "}
+          <a href="https://duetlabs.co" target="_blank" rel="noopener noreferrer">
+            duet labs
+          </a>
+          , where we&apos;re building the data layer for physical ai. math + cs @
+          penn.
         </p>
-        <div className="flex gap-5 flex-wrap text-meta text-fg lowercase pt-1">
-          {contactLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              {...(link.href.startsWith("http")
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="inline-flex items-center min-h-[24px]"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </header>
+        <p>built:</p>
+      </section>
 
-      {/* Built */}
-      <ul className="space-y-2 pb-12">
+      {/* Built log, reverse chronological. This is the layout that is mine
+          rather than theirs: entries, not a bullet list of credentials. */}
+      <ul className="list-none pl-0 mt-flow space-y-flow">
         {projects.map((project) => {
           const row = (
             <>
               <div className="flex items-baseline gap-3">
-                <span className="text-body text-fg shrink-0">{project.year}</span>
-                {project.name && (
-                  <h3 className="font-bold text-lede lowercase text-fg">
-                    {project.name}
-                  </h3>
-                )}
+                <span className="shrink-0">{project.year}</span>
+                {project.name && <h2 className="font-bold">{project.name}</h2>}
               </div>
-              <p className="text-note text-fg lowercase mt-1.5 max-w-measure">
-                {project.blurb}
-              </p>
+              <p className="max-w-measure">{project.blurb}</p>
               {/* Nothing else in the row says where it goes: the year and name
                   read the same whether or not a page exists behind them. This
-                  cue is the affordance, so the name stays plain rather than
-                  competing with a second blue underline. */}
+                  cue is the affordance, so the name stays plain. */}
               {project.slug && (
-                <p className="text-note lowercase mt-1.5">
-                  <span className="text-link underline underline-offset-4 transition-colors group-hover:text-link-hover">
-                    learn more →
-                  </span>
+                <p>
+                  <span data-link>learn more →</span>
                 </p>
               )}
             </>
@@ -104,20 +89,33 @@ export default function Home() {
           return (
             <li key={project.slug ?? project.year}>
               {project.slug ? (
-                <Link
-                  href={`/built/${project.slug}`}
-                  data-block
-                  className="group block py-3"
-                >
+                <Link href={`/built/${project.slug}`} data-block className="block">
                   {row}
                 </Link>
               ) : (
-                <div className="py-3">{row}</div>
+                <div>{row}</div>
               )}
             </li>
           );
         })}
       </ul>
+
+      {/* Contact, the sign-off line both siblings end on. */}
+      <p className="mt-section">
+        {contactLinks.map((link, index) => (
+          <span key={link.href}>
+            {index > 0 && <span className="text-muted"> · </span>}
+            <a
+              href={link.href}
+              {...(link.href.startsWith("http")
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            >
+              {link.label}
+            </a>
+          </span>
+        ))}
+      </p>
 
     </div>
   );

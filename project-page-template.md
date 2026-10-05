@@ -36,7 +36,7 @@ Two rows:
 Every footer link needs `inline-flex items-center min-h-[24px]` so it clears the 24px touch-target minimum. Never end a page on a back link alone — a reader convinced by the page should have somewhere forward to go.
 
 ## Visual system (applies to all project pages)
-Same system as the homepage — themed background and text via the semantic tokens (`bg-bg`, `text-fg`), blue underlined links, `font-mono` for labels/tags. Check any new page in both light and dark. Use the type-role tokens and the `/60` contrast floor defined in `src/app/globals.css`; don't reach for raw Tailwind sizes. Wrap prose blocks in `max-w-measure`. Clicking from the homepage log into a project page should feel like one site, not a tonal jump. Any placeholder data gets the same amber `[bracketed]` TODO treatment used on the homepage until it's replaced with something real.
+Same system as the homepage, and the same one the two co-founder sites use: Times on graph paper, one size, bold for headings, ink links with a grey hairline. Tokens and rules are in `src/app/globals.css` and the Styling section of `CLAUDE.md`. In practice: no size utilities on prose (the body size is inherited), `font-bold mb-[0.12em]` on section headings so they hug their first paragraph, `pt-section space-y-flow` on each section, `text-muted` on the back link and the prev/next nav and nowhere else, `font-mono text-code` only inside code blocks and inline `<code>`. No hairline rules between sections. Wrap prose blocks in `max-w-measure`. Clicking from the homepage log into a project page should feel like one site, not a tonal jump. Any placeholder data gets the `<Todo>` treatment until it's replaced with something real.
 
 ---
 
@@ -96,7 +96,7 @@ The honesty rule matters more here than anywhere else on the site: an unfinished
 ```tsx
 {
   slug: "summer-after-hs",   // omit entirely if there is no /built page yet;
-                             // the row then renders black and unlinked
+                             // the row then renders plain and unlinked
   year: "2026",
   name: "summer after hs",   // lowercase, no title case
   blurb:
@@ -108,7 +108,7 @@ Leave `blurb: <Todo>what this is</Todo>` in place until the real text exists. Ne
 
 ## The link cue
 
-Any entry with a `slug` renders a `learn more →` line under its blurb, and that cue is the row's only link affordance — the project name stays plain `text-fg`. This came out of real feedback: with the name styled as a link and nothing else, a reader couldn't tell whether a row led to a writeup, a repo, or nowhere. Don't restyle the name blue as well; two underlined blue elements in one short row compete, and the row is a block link either way. Entries without a `slug` get no cue, which is what keeps "this goes somewhere" visually distinct from "this is just a note".
+Any entry with a `slug` renders a `learn more →` line under its blurb, and that cue is the row's only link affordance — the project name stays plain `text-fg`. This came out of real feedback: with the name styled as a link and nothing else, a reader couldn't tell whether a row led to a writeup, a repo, or nowhere. Don't underline the name as well; two underlined elements in one short row compete, and the row is a block link either way. Entries without a `slug` get no cue, which is what keeps "this goes somewhere" visually distinct from "this is just a note".
 
 ## The check before you commit
 

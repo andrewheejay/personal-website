@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
-import { ThemeToggle } from "./components/ThemeToggle";
 import "./globals.css";
 
+/* Only the mono face is downloaded; body text is the system Times stack. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400"],
@@ -12,48 +12,31 @@ const plexMono = IBM_Plex_Mono({
 
 /* No openGraph or twitter blocks and no og:image on purpose. With none of
    them present, link previews fall back to the title, the description and the
-   domain — the three plain lines justinwang.xyz shows. Adding any og:* tag
-   back changes the card's shape. */
+   domain, three plain lines. Adding any og:* tag back changes the card. */
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrewheejay.com"),
   title: "Andrew Lee",
   description: "the personal website of Andrew Lee",
 };
 
-/* themeColor belongs to the viewport export, not metadata — Next silently
-   drops it from metadata and only warns at build time. This paints the
-   browser chrome to match the active theme. */
+/* themeColor belongs to the viewport export, not metadata. One value: the
+   site has a single light theme, the paper color from globals.css. */
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B0C0C" },
-  ],
+  themeColor: "#FAFCFC",
 };
-
-// Runs before first paint so a pinned theme never flashes the other one.
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // suppressHydrationWarning: the pre-paint script below stamps data-theme onto
-  // <html> before React hydrates, so the client tree legitimately differs from
-  // the server's. Without it, every visitor who has ever used the toggle gets a
-  // hydration error in the console. It covers this element's attributes only,
-  // not its subtree.
   return (
-    <html lang="en" className={plexMono.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
-      <body className="antialiased min-h-screen bg-bg font-sans text-fg selection:bg-fg selection:text-bg">
-        <main className="max-w-2xl mx-auto px-6 py-16 md:py-20">
+    <html lang="en" className={plexMono.variable}>
+      <body className="antialiased min-h-screen">
+        {/* 672px column (idhant's), 68ch prose measure inside it (allen's).
+            Padding steps down under 640px the way both siblings' does. */}
+        <main className="max-w-2xl mx-auto px-5 pt-8 pb-12 sm:px-6 sm:pt-16 sm:pb-20">
           {children}
-          <div className="flex justify-end pt-12">
-            <ThemeToggle />
-          </div>
         </main>
       </body>
     </html>

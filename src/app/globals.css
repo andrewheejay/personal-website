@@ -1,142 +1,118 @@
 @import "tailwindcss";
 
-/* Semantic tokens indirect through runtime variables so both themes swap
-   cleanly. Tailwind's opacity modifiers (text-fg/60) still work, because v4
-   emits color-mix() and resolves the indirection at computed-value time. */
+/* One theme, one size, one weight plus bold. The look is the system the three
+   duet labs co-founder sites share: a lowercase letter, set in Times, on
+   graph paper. Where allen's site (allenbuild/mywebsite) and idhant's
+   (idhant.dev) differ, the value here sits between them. Sources per token
+   are in CLAUDE.md. */
 @theme {
-  --color-bg: var(--surface);
-  --color-fg: var(--content);
-  --color-link: var(--accent);
-  --color-link-hover: var(--accent-hover);
-  --color-todo: var(--flag);
-
-  /* The two brand constants, kept so the identity survives the theme split. */
-  --color-ivory: #F4F1EB;
-  --color-ink: #0B0C0C;
+  --color-bg: #FAFCFC;        /* allen's paper; the tile sits on top of it */
+  --color-fg: #2A2A2A;        /* 13.9:1 on paper, between #3A3A3A and #1A1A1A */
+  --color-muted: #6A7378;     /* 4.7:1, the floor for text at AA */
+  --color-hairline: #A0A5A8;  /* underlines and bullet markers; not text */
+  --color-rule: rgb(27 27 27 / 0.14);
+  --color-todo: #7A5000;      /* 6.9:1 */
 
   --font-sans: Times, "Times New Roman", "Liberation Serif", serif;
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 
-  /* Type roles. One sans size, one weight — hierarchy comes from color and
-     space, not from type. The role names are kept so markup stays readable. */
-  /* The name sits one step above body, the ratio both references use
-     (18/15 and 21/18). 19px over a 16px body is 1.19x. */
-  --text-display: 1.1875rem;
-  --text-display--line-height: 1.25;
-  --text-title: 1rem;
-  --text-title--line-height: 1.65;
-  --text-lede: 1rem;
-  --text-lede--line-height: 1.65;
-  --text-body: 1rem;
-  --text-body--line-height: 1.65;
-  --text-note: 1rem;
-  --text-note--line-height: 1.65;
-  --text-meta: 1rem;
-  --text-meta--line-height: 1.65;
-  /* Monospace survives only where it is load-bearing: code and the ASCII
-     architecture diagram, which depend on fixed-width alignment. */
+  /* Body size lives on `body`, not in a role token: the scale is flat, so a
+     size utility would only restate the inherited value. Mono keeps a token
+     because it is the one place the size differs. */
   --text-code: 0.875rem;
   --text-code--line-height: 1.6;
 
-  /* Reading measure: 64ch. `ch` is the font's digit advance, and Times' is
-     0.5em, so this is ~512px at a 16px body — narrower than the 624px
-     max-w-2xl column, which makes this the binding constraint on prose.
-     Renders at roughly 70 characters. Swapping the sans changes this number. */
-  --container-measure: 64ch;
+  /* Vertical rhythm. flow is paragraph to paragraph; section is between
+     titled blocks. Both are em so they follow the body size on phones. */
+  --spacing-flow: 0.9em;
+  --spacing-section: 1.75em;
+
+  /* Reading measure. ch is the digit advance, 0.5em in Times, so 68ch is
+     ~578px at 17px: narrower than the 672px column, so this is what binds. */
+  --container-measure: 68ch;
 }
 
-/* --- Themes -------------------------------------------------------------
-   Dark is the base. Light is applied when the visitor's OS asks for it, and
-   either theme can be pinned with data-theme, which must outrank the query.
-   Link blue is tuned per surface: one value cannot clear 4.5:1 on both
-   #0B0C0C and #FFFFFF. */
-
-:root {
-  color-scheme: dark;
-  --surface: #0B0C0C;
-  --content: #F4F1EB;
-  /* Farza's link blue, from his site's --framer-link-text-color. 6.53:1 on
-     #0B0C0C; hover 5.56:1. Both clear AA. His hover goes *darker*, which is
-     his choice, not the usual dark-theme direction. */
-  --accent: #0099FF;
-  --accent-hover: #0088FF;
-  --flag: #D9A441;
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    color-scheme: light;
-    --surface: #FFFFFF;
-    --content: #000000;      /* pure black, 21:1 */
-    --accent: #0000EE;       /* the browser's own link blue, 9.4:1 */
-    --accent-hover: #0000B3;
-    --flag: #8A5A00;
+@layer base {
+  html {
+    background: var(--color-bg);
+    scrollbar-color: color-mix(in srgb, var(--color-fg) 25%, transparent) var(--color-bg);
+    caret-color: var(--color-fg);
   }
-}
 
-:root[data-theme="light"] {
-  color-scheme: light;
-  --surface: #FFFFFF;
-  --content: #000000;
-  --accent: #0000EE;
-  --accent-hover: #0000B3;
-  --flag: #8A5A00;
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --surface: #0B0C0C;
-  --content: #F4F1EB;
-  --accent: #0099FF;
-  --accent-hover: #0088FF;
-  --flag: #D9A441;
-}
-
-/* System serif, so nothing is downloaded for body text. Font smoothing is
-   deliberately ON, but it is set in layout.tsx via Tailwind's `antialiased`
-   class rather than here — don't add a -webkit-font-smoothing rule to this
-   block expecting it to be off, and don't drop the class thinking this rule
-   covers it. */
-body {
-  text-rendering: optimizeLegibility;
-}
-
-/* Links are blue and underlined at rest, so they are identifiable without
-   hover and without color alone carrying the signal. The underline is static:
-   hover only lightens the blue, with no bar sweeping in underneath. */
-a {
-  color: var(--color-link);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--color-link-hover);
-}
-
-/* Block-level links (whole project rows) carry their affordance structurally;
-   the text treatment lives on the heading inside them. */
-a[data-block] {
-  text-decoration: none;
-  color: inherit;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  a {
-    transition: none;
+  /* The tile is allen's, under the same 52% white wash he uses, so the lines
+     stay faint and text contrast can be measured against the paper. Font
+     smoothing is on via Tailwind's `antialiased` on <body> in layout.tsx. */
+  body {
+    background-color: var(--color-bg);
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.52), rgb(255 255 255 / 0.52)),
+      url("/graph-paper.png");
+    background-position: left top;
+    background-size: 256px 256px;
+    background-repeat: repeat;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem; /* 17px: idhant's, inside allen's fluid range */
+    line-height: 1.4;     /* between allen's 1.36 and idhant's 1.45 */
+    text-rendering: optimizeLegibility;
   }
-}
 
-/* Browser surfaces belong to the design system too. */
-:focus-visible {
-  outline: 2px solid var(--color-link);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
+  @media (max-width: 640px) {
+    body {
+      font-size: 0.9375rem; /* 15px */
+      line-height: 1.55;
+    }
+  }
 
-html {
-  scrollbar-color: color-mix(in srgb, var(--color-fg) 25%, transparent) var(--color-bg);
-  caret-color: var(--color-fg);
+  /* Links take the surrounding color and carry a grey hairline. Hover turns
+     the hairline to ink; the text itself does not move or change color. A
+     span marked data-link inside a block link gets the same treatment,
+     because an <a> cannot sit inside an <a>. */
+  a,
+  [data-link] {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-hairline);
+    text-underline-offset: 0.15em;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  a:hover,
+  a[data-block]:hover [data-link] {
+    text-decoration-color: var(--color-fg);
+  }
+
+  /* Block-level links (whole log rows) carry their affordance in the
+     data-link cue inside them. */
+  a[data-block] {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.6em;
+  }
+
+  li::marker {
+    color: var(--color-muted);
+    font-size: 0.72em;
+  }
+
+  ::selection {
+    background: #D6E0E4;
+  }
+
+  :focus-visible {
+    outline: 2px solid #59666E;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a,
+    [data-link] {
+      transition: none;
+    }
+  }
 }
