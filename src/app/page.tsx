@@ -49,12 +49,11 @@ export default function Home() {
           site or on duetlabs.co; nothing is borrowed from their bios. */}
       <section className="space-y-flow max-w-measure">
         <p>
-          <strong>hey i&apos;m andrew</strong>, math + cs @ penn, z fellow, and
-          co-founder @{" "}
+          <strong>hey i&apos;m andrew</strong>, co-founder @{" "}
           <a href="https://duetlabs.co" target="_blank" rel="noopener noreferrer">
             duet labs
           </a>
-          .
+          , z fellow, and math + cs @ penn.
         </p>
         <p>we are building a new data layer for physical ai.</p>
         <p>
