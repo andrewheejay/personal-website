@@ -1,46 +1,41 @@
-import Link from "next/link";
-/* Entries without a slug have no /built page yet and render as plain rows. */
 type Entry = {
-  slug?: string;
-  year: string;
-  /* Omitted for entries that are a year and a note, with nothing to title. */
-  name?: string;
+  name: string;
+  href: string;
+  /* One line, after the linked name. Idhant's page sets each credential as a
+     single bullet: a short claim with the link inside it. */
   blurb: React.ReactNode;
 };
 
+/* No /built pages any more: each entry links straight out. */
 const projects: Entry[] = [
   {
-    slug: "2026",
-    year: "2026",
-    name: "out of the notebook",
-    blurb:
-      "until this year everything i did happened on a python notebook. this year i decided to try something new: lime, two months as an ai engineer at dnk, a first trip to sf, and the physical ai data company i'm building now.",
-  },
-  {
-    slug: "phishfence",
-    year: "2025",
     name: "phishfence",
+    href: "https://github.com/thomasha1310/phishfence",
     blurb:
-      "a phishing detector that explains itself, because telling someone “this is a scam” teaches them nothing. 99.31% accurate, and every verdict comes back with the reason in plain english. first author, bu rise data science practicum.",
+      "a phishing detector that explains every verdict, 99.31% accurate",
   },
   {
-    slug: "motion-segmentation",
-    year: "2024",
-    name: "motion segmentation",
-    blurb:
-      "given raw motion-sensor data, find where one movement ends and the next begins. i benchmarked seven existing methods against each other, then tested whether a neural network could beat them. korea science service international research program.",
-  },
-  {
-    slug: "authentivox",
-    year: "2023",
     name: "authentivox",
+    href: "https://github.com/andrewheejay/Authentivox",
     blurb:
-      "catching a voice-phishing call while it is still happening, on a model small enough to run on an ordinary laptop with no graphics card. 98.46% accurate. ksef silver medal.",
+      "catches voice-phishing calls live on a laptop with no gpu, 98.46% accurate",
+  },
+  {
+    name: "motion segmentation",
+    href: "https://github.com/andrewheejay/motion-segmentation",
+    blurb:
+      "benchmarked seven motion-segmentation methods, then tested whether a neural network could beat them",
+  },
+  {
+    name: "fitgrid",
+    href: "https://fitgrid.xyz",
+    blurb:
+      "a wardrobe app that builds one fit a day. lock a piece, reroll the rest",
   },
 ];
 
 const contactLinks = [
-  { href: "mailto:andrew.heejay.lee@gmail.com", label: "andrew.heejay.lee@gmail.com" },
+  { href: "mailto:andrew@duetlabs.co", label: "andrew@duetlabs.co" },
   { href: "https://github.com/andrewheejay", label: "github" },
   { href: "https://www.linkedin.com/in/andrewheejay/", label: "linkedin" },
 ];
@@ -54,50 +49,43 @@ export default function Home() {
           site or on duetlabs.co; nothing is borrowed from their bios. */}
       <section className="space-y-flow max-w-measure">
         <p>
-          <strong>hi! i&apos;m andrew.</strong> i&apos;m a co-founder @{" "}
+          <strong>hey i&apos;m andrew</strong>, math + cs @ penn, z fellow, and
+          co-founder @{" "}
           <a href="https://duetlabs.co" target="_blank" rel="noopener noreferrer">
             duet labs
           </a>
-          , where we&apos;re building the data layer for physical ai. math + cs @
-          penn.
+          .
         </p>
-        <p>built:</p>
+        <p>we are building a new data layer for physical ai.</p>
+        <p>
+          we think robots can learn a lot by watching people work together.
+        </p>
+        <p>a few things i&apos;ve built:</p>
       </section>
 
-      {/* Built log, reverse chronological. This is the layout that is mine
-          rather than theirs: entries, not a bullet list of credentials. */}
-      <ul className="list-none pl-0 mt-flow space-y-flow">
-        {projects.map((project) => {
-          const row = (
-            <>
-              <div className="flex items-baseline gap-3">
-                <span className="shrink-0">{project.year}</span>
-                {project.name && <h2 className="font-bold">{project.name}</h2>}
-              </div>
-              <p className="max-w-measure">{project.blurb}</p>
-              {/* Nothing else in the row says where it goes: the year and name
-                  read the same whether or not a page exists behind them. This
-                  cue is the affordance, so the name stays plain. */}
-              {project.slug && (
-                <p>
-                  <span data-link>learn more →</span>
-                </p>
-              )}
-            </>
-          );
+      {/* Built log, reverse chronological, one bullet per entry. */}
+      <ul className="mt-[0.3em] space-y-[0.1em] max-w-measure">
+        {projects.map((project) => (
+          <li key={project.name}>
+            <a href={project.href} target="_blank" rel="noopener noreferrer">
+              {project.name}
+            </a>
+            {": "}
+            {project.blurb}
+          </li>
+        ))}
+      </ul>
 
-          return (
-            <li key={project.slug ?? project.year}>
-              {project.slug ? (
-                <Link href={`/built/${project.slug}`} data-block className="block">
-                  {row}
-                </Link>
-              ) : (
-                <div>{row}</div>
-              )}
-            </li>
-          );
-        })}
+      <p className="mt-[1em] max-w-measure">when i&apos;m not building:</p>
+      <ul className="mt-[0.3em] space-y-[0.1em] max-w-measure">
+        <li>varsity basketball, soccer, track; 7+ recruiting offers, incl. caltech</li>
+        <li>2025 national club basketball champion</li>
+        <li>korean national astronomy olympiad team summer camp</li>
+        <li>playing cello (started at age 3)</li>
+        <li>
+          reading religion and philosophy (<em>confessions</em>,{" "}
+          <em>consolation of philosophy</em>)
+        </li>
       </ul>
 
       {/* Contact, the sign-off line both siblings end on. */}

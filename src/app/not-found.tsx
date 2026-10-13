@@ -17,10 +17,10 @@ export default function NotFound() {
           ← all projects
         </Link>
         <a
-          href="mailto:andrew.heejay.lee@gmail.com"
+          href="mailto:andrew@duetlabs.co"
           className="inline-flex items-center min-h-[24px]"
         >
-          andrew.heejay.lee@gmail.com
+          andrew@duetlabs.co
         </a>
       </div>
     </div>
