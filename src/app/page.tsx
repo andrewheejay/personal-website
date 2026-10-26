@@ -45,19 +45,20 @@ export default function Home() {
     <div className="lowercase">
 
       {/* Opening. The letter shape both co-founders' pages open with: who,
-          what, where, in one breath. Every claim here is already on this
-          site or on duetlabs.co; nothing is borrowed from their bios. */}
+          what, where, in one breath. The raise and the a16z backing are
+          Andrew's own claims (2026-10-25); nothing is borrowed from the
+          co-founders' bios. */}
       <section className="space-y-flow max-w-measure">
         <p>
           <strong>hey i&apos;m andrew</strong>, co-founder @{" "}
           <a href="https://duetlabs.co" target="_blank" rel="noopener noreferrer">
             duet labs
-          </a>
-          , z fellow, and math + cs @ penn.
+          </a>{" "}
+          (a16z sr), z fellow, and math + cs @ penn.
         </p>
-        <p>we are building a new data layer for physical ai.</p>
         <p>
-          we think robots can learn a lot by watching people work together.
+          we&apos;ve raised $1.36m because we think robots can learn a lot by
+          watching people work together.
         </p>
         <p>a few things i&apos;ve built:</p>
       </section>
