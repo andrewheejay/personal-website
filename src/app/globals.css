@@ -109,6 +109,36 @@
     border-radius: 2px;
   }
 
+  /* The ASCII figure on the homepage. Shrinks with the screen so all 88
+     columns fit on a phone, and stays at 10px on desktop. */
+  .ascii-figure {
+    margin: 0;
+    align-self: center;
+    max-width: 100%;
+    min-height: 26em;
+    overflow: hidden;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: min(10px, calc((100vw - 48px) / 60));
+    line-height: 1;
+    letter-spacing: 0.06em;
+    white-space: pre;
+    color: var(--color-fg);
+    user-select: none;
+    cursor: crosshair;
+    touch-action: pan-y;
+  }
+
+  /* The "a few more things" toggle: no default triangle, an arrow that flips. */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] .more-arrow {
+    transform: rotate(180deg);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     a,
     [data-link] {
