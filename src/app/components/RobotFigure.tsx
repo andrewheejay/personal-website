@@ -28,10 +28,9 @@ const ARIA =
 export default function RobotFigure() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const robots = useRef<Robots | null>(null);
-  const last = useRef({ bar: "", label: "" });
+  const lastLabel = useRef("");
   const [ready, setReady] = useState(false);
-  const [state, setState] = useState({ fig: 1, label: "handover", bar: "" });
-  const [paused, setPaused] = useState(false);
+  const [state, setState] = useState({ fig: 1, label: "handover" });
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -45,13 +44,10 @@ export default function RobotFigure() {
       font: "ui-monospace,SFMono-Regular,Menlo,monospace",
       colors: ["#A0A5A8", "#2A2A2A", "#5E6A72"],
       onFail: () => setFailed(true),
-      onTick: (T: number, LOOP: number, si: number, label: string) => {
-        const n = 12;
-        const filled = Math.round((T / LOOP) * n);
-        const bar = "[" + "█".repeat(filled) + "░".repeat(n - filled) + "]";
-        if (bar !== last.current.bar || label !== last.current.label) {
-          last.current = { bar, label };
-          setState({ fig: si + 1, label, bar });
+      onTick: (_T: number, _LOOP: number, si: number, label: string) => {
+        if (label !== lastLabel.current) {
+          lastLabel.current = label;
+          setState({ fig: si + 1, label });
         }
       },
     });
@@ -64,7 +60,7 @@ export default function RobotFigure() {
       <button
         type="button"
         aria-label={ARIA}
-        onClick={() => robots.current && setPaused(robots.current.toggle())}
+        onClick={() => robots.current?.toggle()}
         className="block w-full cursor-pointer border-0 bg-transparent p-0"
       >
         <canvas ref={canvasRef} className="block w-full" />
@@ -72,12 +68,9 @@ export default function RobotFigure() {
       {failed && <p className="my-6 text-sm text-muted">this animation needs webgl.</p>}
       <figcaption
         aria-hidden="true"
-        className="flex justify-between gap-3 whitespace-nowrap font-mono text-xs text-muted"
+        className="truncate whitespace-nowrap font-mono text-xs text-muted"
       >
-        <span className="truncate">
-          fig. {state.fig} — {state.label} &nbsp;{state.bar}
-        </span>
-        <span>{paused ? "click to play" : "click to pause"}</span>
+        fig. {state.fig} — {state.label}
       </figcaption>
     </figure>
   );
