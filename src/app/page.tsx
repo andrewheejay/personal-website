@@ -36,8 +36,8 @@ export default function Home() {
           distinctly human.
         </p>
         <p className="!mt-[1.3em] italic text-muted">
-          two are better than one; because they have a good reward for their
-          labour.
+          two are better than one, because they have a good reward for their
+          toil.
         </p>
       </section>
 
