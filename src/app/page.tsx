@@ -6,6 +6,7 @@ const contactLinks = [
   { href: "mailto:andrew@duetlabs.co", label: "andrew@duetlabs.co" },
   { href: "https://github.com/andrewheejay", label: "github" },
   { href: "https://www.linkedin.com/in/andrewheejay/", label: "linkedin" },
+  { href: "https://x.com/andrewheejay", label: "x" },
 ];
 
 export default function Home() {
